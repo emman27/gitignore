@@ -17,8 +17,20 @@ touch .gitignore
 
 This project aims to replicate those 2 manual steps with a simple command - for a Go project, for example:
 
-```sh
+```bash
 gitignore generate go
+```
+
+## Installation
+
+The easiest way to install this package is to download a versioned release at the [releases page](https://github.com/emman27/gitignore/releases)
+
+### Building from source
+
+Requires a working `go` installation. This package was developed in `go 1.12`, but should work with any decently recent version of `go`.
+
+```bash
+go get -u github.com/emman27/gitignore
 ```
 
 ## Supported keywords
