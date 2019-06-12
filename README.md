@@ -1,4 +1,4 @@
-# Gitignore generator [![Maintainability](https://api.codeclimate.com/v1/badges/d38440effaaa6f58d459/maintainability)](https://codeclimate.com/github/emman27/gitignore/maintainability)
+# Gitignore generator [![Maintainability](https://api.codeclimate.com/v1/badges/d38440effaaa6f58d459/maintainability)](https://codeclimate.com/github/emman27/gitignore/maintainability)[![Test Coverage](https://api.codeclimate.com/v1/badges/d38440effaaa6f58d459/test_coverage)](https://codeclimate.com/github/emman27/gitignore/test_coverage)
 
 This is a CLI tool for generating gitignores
 
