@@ -2,7 +2,7 @@ package gitignore
 
 import (
 	"context"
-	"strings"
+	"fmt"
 )
 
 // Parser converts strings to their corresponding gitignore type
@@ -24,6 +24,16 @@ func NewParser() (Parser, error) {
 // Basic parser, assumes that the gitignoreType is simply a title casing of the input string
 type parser struct{}
 
+var parserMap = map[string]gitignoreType{
+	"go":     Go,
+	"Go":     Go,
+	"golang": Go,
+}
+
 func (p *parser) Parse(ctx context.Context, s string) (gitignoreType, error) {
-	return gitignoreType(strings.Title(s)), nil
+	parsed, ok := parserMap[s]
+	if !ok {
+		return "", fmt.Errorf("%s is not a recognized gitignore type", s)
+	}
+	return parsed, nil
 }

@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/suite"
 )
 
 func TestNewParser(t *testing.T) {
@@ -13,9 +14,31 @@ func TestNewParser(t *testing.T) {
 	assert.NotNil(t, p)
 }
 
-func Test_parser_Parse(t *testing.T) {
-	p := &parser{}
-	parsed, err := p.Parse(context.TODO(), "go")
-	assert.Nil(t, err)
-	assert.Equal(t, Go, parsed)
+type ParserSuite struct {
+	suite.Suite
+	parser Parser
+}
+
+func TestParserSuite(t *testing.T) {
+	suite.Run(t, new(ParserSuite))
+}
+
+func (s *ParserSuite) SetupTest() {
+	p, err := NewParser()
+	s.Suite.Nil(err)
+	s.parser = p
+}
+
+func (s *ParserSuite) TestGo() {
+	expectedGoParsables := []string{"go", "Go", "golang"}
+	for _, parsable := range expectedGoParsables {
+		parsed, err := s.parser.Parse(context.TODO(), parsable)
+		s.Nil(err)
+		s.Equal(Go, parsed)
+	}
+}
+
+func (s *ParserSuite) TestUnparsable() {
+	_, err := s.parser.Parse(context.TODO(), "dsfjaklfjladsfjalj")
+	s.NotNil(err)
 }
