@@ -18,6 +18,9 @@ touch .gitignore
 This project aims to replicate those 2 manual steps with a simple command - for a Go project, for example:
 
 ```bash
+mkdir -p ~/dev/my-project
+cd ~/dev/my-project
+git init
 gitignore generate go
 ```
 
