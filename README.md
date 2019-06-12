@@ -42,4 +42,16 @@ The list of supported gitignores will grow based on usage. As of now, only the f
 
 ```text
 go
+golang
+Go
+```
+
+## Testing
+
+Testing is done using the `testify` framework as well as `mockery` for mock generation. You will need to generate the mock code for the tests to run. If you don't have an internet connection, run the tests in short mode to avoid integration tests failing
+
+```bash
+go generate ./...
+go test -short ./...
+go test ./...
 ```
