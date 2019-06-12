@@ -53,6 +53,9 @@ func (l *githubLoader) Load(ctx context.Context, t gitignoreType) (string, error
 	if err != nil {
 		return "", err
 	}
+	if resp.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("matching gitignore not found for %s", t)
+	}
 	defer resp.Body.Close()
 	bytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
