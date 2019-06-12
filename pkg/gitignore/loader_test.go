@@ -7,8 +7,6 @@ import (
 	"github.com/stretchr/testify/suite"
 )
 
-//go:generate mockery -name=Loader -inpkg -testonly
-
 type LoaderSuite struct {
 	suite.Suite
 	loader Loader
