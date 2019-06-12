@@ -50,9 +50,10 @@ func (c *cli) Generate(args []string) error {
 }
 
 var GenerateCommand = &cobra.Command{
-	Use:   "generate",
-	Short: "Generate a gitignore",
-	Args:  cobra.ExactArgs(1),
+	Use:     "generate <language>",
+	Short:   "Generate a gitignore.",
+	Example: "gitignore generate go",
+	Args:    cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		c := getCLIInstance()
 		err := c.Generate(args)
