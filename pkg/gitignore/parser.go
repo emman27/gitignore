@@ -16,10 +16,12 @@ type Parser interface {
 	Parse(ctx context.Context, s string) (gitignoreType, error)
 }
 
+// NewParser initializes a new parser
 func NewParser() (Parser, error) {
 	return &parser{}, nil
 }
 
+// Basic parser, assumes that the gitignoreType is simply a title casing of the input string
 type parser struct{}
 
 func (p *parser) Parse(ctx context.Context, s string) (gitignoreType, error) {
