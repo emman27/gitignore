@@ -28,6 +28,9 @@ var parserMap = map[string]gitignoreType{
 	"go":     Go,
 	"Go":     Go,
 	"golang": Go,
+	"python": Python,
+	"Python": Python,
+	"py":     Python,
 }
 
 func (p *parser) Parse(ctx context.Context, s string) (gitignoreType, error) {

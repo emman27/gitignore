@@ -30,15 +30,22 @@ func (s *ParserSuite) SetupTest() {
 }
 
 func (s *ParserSuite) TestGo() {
-	expectedGoParsables := []string{"go", "Go", "golang"}
-	for _, parsable := range expectedGoParsables {
-		parsed, err := s.parser.Parse(context.TODO(), parsable)
-		s.Nil(err)
-		s.Equal(Go, parsed)
-	}
+	s.testHelper([]string{"go", "Go", "golang"}, Go)
+}
+
+func (s *ParserSuite) TestPython() {
+	s.testHelper([]string{"py", "python", "Python"}, Python)
 }
 
 func (s *ParserSuite) TestUnparsable() {
 	_, err := s.parser.Parse(context.TODO(), "dsfjaklfjladsfjalj")
 	s.NotNil(err)
+}
+
+func (s *ParserSuite) testHelper(expectedCanParse []string, shouldParseTo gitignoreType) {
+	for _, parsable := range expectedCanParse {
+		parsed, err := s.parser.Parse(context.TODO(), parsable)
+		s.Nil(err)
+		s.Equal(shouldParseTo, parsed)
+	}
 }

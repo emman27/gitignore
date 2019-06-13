@@ -67,5 +67,6 @@ func (l *githubLoader) Load(ctx context.Context, t gitignoreType) (string, error
 type gitignoreType string
 
 const (
-	Go gitignoreType = "Go"
+	Go     gitignoreType = "Go"
+	Python gitignoreType = "Python"
 )
