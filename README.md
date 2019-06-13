@@ -44,6 +44,9 @@ The list of supported gitignores will grow based on usage. As of now, only the f
 go
 golang
 Go
+python
+py
+Python
 ```
 
 ## Testing
