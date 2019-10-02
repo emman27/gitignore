@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix github.com/example/project
+gazelle(name = "gazelle")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["main.go"],
+    importpath = "github.com/emman27/gitignore",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@//pkg/cli:go_default_library",
+        "@com_github_spf13_cobra//:go_default_library",
+        "@com_github_spf13_pflag//:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "project",
+    embed = [":go_default_library"],
+    visibility = ["//visibility:public"],
+)
